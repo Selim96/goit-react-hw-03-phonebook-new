@@ -3,12 +3,14 @@ import { nanoid } from 'nanoid'
 
 class App extends Component {
   state = {
-  contacts: [],
+  contacts: ['Selim Fazylov'],
   name: ''
   }
 
-  render () {
-    <div>
+  
+  render() {
+    return (
+      <div>
       <h1>Phonbook</h1>
       <form>
         <label>
@@ -21,8 +23,19 @@ class App extends Component {
           required
         />
         </label>
-      </form>
+        <button type="submit">Add contact</button> 
+        </form>
+        <h2>Contacts</h2>
+        <ul>
+          {this.state.contacts.map(contact => (
+          
+            <li>{contact}</li>
+            
+          ))}
+        </ul>
     </div>
+    )
+    
   };
 };
 
