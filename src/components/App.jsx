@@ -3,16 +3,27 @@ import { nanoid } from 'nanoid'
 
 class App extends Component {
   state = {
-  contacts: ['Selim Fazylov'],
+  contacts: [],
   name: ''
   }
 
+  handlClick = (e) => {
+    e.preventDefault();
+    console.log(e.currentTarget.name.value);
+    this.setState(prev => {
+      console.log(prev.contacts);
+      return {
+        contacts: prev.contacts.push(5),
+      };
+    });
+  }
   
   render() {
+    const { contacts, name } = this.state;
     return (
       <div>
       <h1>Phonbook</h1>
-      <form>
+      <form onSubmit={this.handlClick}>
         <label>
           Name
           <input
@@ -27,10 +38,8 @@ class App extends Component {
         </form>
         <h2>Contacts</h2>
         <ul>
-          {this.state.contacts.map(contact => (
-          
+          {contacts.map(contact => (
             <li>{contact}</li>
-            
           ))}
         </ul>
     </div>
