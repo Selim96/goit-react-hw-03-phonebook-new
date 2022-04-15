@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ContactForm from './ContactForm';
+import Filter from './Filter';
+import ContactList from './ContactList';
 import { nanoid } from 'nanoid'
 
 class App extends Component {
@@ -33,31 +35,20 @@ class App extends Component {
     return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   }
 
+  checkFunction = (name) => {
+    return this.state.contacts.some(v => v.name.toLowerCase() === name.toLowerCase()); 
+  }
+
   render() {
     const contactsArr = this.toDoFilter();
     
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitData}/>
+        <ContactForm onSubmit={this.formSubmitData} check={this.checkFunction} />
         <h2>Contacts</h2>
-        <label>
-          Find contacts by name
-          <input
-            type="text"
-            name="filter"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            value={this.state.filter}
-            onChange={this.filterChange}
-          />
-        </label>
-        <ul>
-          {contactsArr.map(contact => {
-            return (
-              <li key={contact.id}>{contact.name}: {contact.number}</li>
-            );
-          })}
-        </ul>
+        <Filter value={this.state.filter} onChange={this.filterChange}/>
+        <ContactList contacts={contactsArr}/>
     </div>
     )
     
