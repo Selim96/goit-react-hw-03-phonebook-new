@@ -1,10 +1,10 @@
 import ContactItem from '../ContactItem';
 import s from './ContactList.module.css';
 
-export default function ContactList ({contacts}) {
+export default function ContactList ({contacts, toDelete}) {
     return (
         <ul className={s.list}>
-            <ContactItem contacts={contacts}/>
+            <ContactItem contacts={contacts} toDelete={toDelete}/>
         </ul>
     );
 }
