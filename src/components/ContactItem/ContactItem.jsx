@@ -1,4 +1,5 @@
 import s from './ContactItem.module.css';
+import PropTypes from 'prop-types';
 
 export default function ContactItem({contacts, toDelete}) {
     return (
@@ -10,4 +11,9 @@ export default function ContactItem({contacts, toDelete}) {
                 );
             })
         );
+}
+
+ContactItem.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+    toDelete: PropTypes.func,
 }

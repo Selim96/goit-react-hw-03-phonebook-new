@@ -1,11 +1,17 @@
 import s from './ContactForm.module.css';
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 
 class ContactForm extends Component {
     state = {
         name: '',
         number: '',
     }
+
+  static propTypes = {
+    onSubmit: PropTypes.func,
+    check: PropTypes.func,
+  }
 
     handlChange = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
