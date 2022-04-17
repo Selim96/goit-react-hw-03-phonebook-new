@@ -4,7 +4,7 @@ import Filter from './Filter';
 import ContactList from './ContactList';
 import { nanoid } from 'nanoid';
 // импорт тестового списка контактов
-import defaultData from './data/data';
+// import defaultData from './data/data';
 
 class App extends Component {
   state = {
